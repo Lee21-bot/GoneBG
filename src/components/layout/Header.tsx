@@ -18,6 +18,9 @@ const Header = () => {
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-6 text-base">
+            <Link to="/examples" className="text-gray-700 hover:text-gray-900 font-medium transition-colors">
+              Examples
+            </Link>
             <Link to="/faq" className="text-gray-700 hover:text-gray-900 font-medium transition-colors">
               FAQ
             </Link>
@@ -58,6 +61,13 @@ const Header = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 border-t border-[#e5e1d6] bg-[#faf7ef]/95">
+              <Link
+                to="/examples"
+                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Examples
+              </Link>
               <Link
                 to="/faq"
                 className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors"

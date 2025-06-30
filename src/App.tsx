@@ -3,6 +3,7 @@ import './App.css';
 import Header from './components/layout/Header'
 import ImageUpload from './components/upload/ImageUpload'
 import FAQ from './components/help/FAQ'
+import ExamplesPage from './components/examples/ExamplesPage'
 import ErrorBoundary from './components/ErrorBoundary'
 
 const Home = () => {
@@ -31,6 +32,7 @@ function App() {
           <div className="pt-12">
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/examples" element={<ExamplesPage />} />
               <Route path="/faq" element={<FAQ />} />
             </Routes>
           </div>

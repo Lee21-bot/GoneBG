@@ -1,0 +1,19 @@
+{
+  "name": "GoneBG - Free Background Removal Tool",
+  "short_name": "GoneBG",
+  "description": "Remove backgrounds from images instantly with professional results. Free AI-powered background removal tool.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f1e6",
+  "theme_color": "#7c3aed",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["photo", "productivity", "utilities"],
+  "lang": "en",
+  "orientation": "portrait-primary"
+} 
