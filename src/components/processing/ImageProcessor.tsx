@@ -88,7 +88,7 @@ const ImageProcessor: React.FC<ImageProcessorProps> = ({
 
       {/* Image comparison */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-        <div className="relative bg-gray-50 rounded-lg overflow-hidden">
+        <div className="relative bg-[#faf7ef] rounded-lg overflow-hidden">
           <img
             src={originalImageUrl}
             alt="Original"
@@ -101,10 +101,10 @@ const ImageProcessor: React.FC<ImageProcessorProps> = ({
         
         <div className="relative bg-transparent rounded-lg overflow-hidden" style={{
           backgroundImage: `
-            linear-gradient(45deg, #ccc 25%, transparent 25%), 
-            linear-gradient(-45deg, #ccc 25%, transparent 25%), 
-            linear-gradient(45deg, transparent 75%, #ccc 75%), 
-            linear-gradient(-45deg, transparent 75%, #ccc 75%)
+            linear-gradient(45deg, #e5e1d6 25%, transparent 25%), 
+            linear-gradient(-45deg, #e5e1d6 25%, transparent 25%), 
+            linear-gradient(45deg, transparent 75%, #e5e1d6 75%), 
+            linear-gradient(-45deg, transparent 75%, #e5e1d6 75%)
           `,
           backgroundSize: '20px 20px',
           backgroundPosition: '0 0, 0 10px, 10px -10px, -10px 0px'

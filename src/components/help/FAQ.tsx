@@ -6,26 +6,24 @@ interface FAQItemProps {
 }
 
 const FAQItem = ({ question, answer }: FAQItemProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <div className="border-b border-gray-200 py-4">
       <button
         className="flex justify-between items-center w-full text-left"
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => setIsExpanded(!isExpanded)}
       >
         <h3 className="text-xl font-semibold text-gray-800">{question}</h3>
-        <span className={`transform transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}>
+        <span className={`transform transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`}>
           ▼
         </span>
       </button>
-      <div
-        className={`mt-2 text-gray-600 transition-all duration-200 ease-in-out overflow-hidden ${
-          isOpen ? 'max-h-96' : 'max-h-0'
-        }`}
-      >
-        <p className="py-2">{answer}</p>
-      </div>
+      {isExpanded && (
+        <div className="mt-2 text-gray-600 transition-all duration-200 ease-in-out">
+          <p>{answer}</p>
+        </div>
+      )}
     </div>
   );
 };
@@ -57,9 +55,14 @@ const FAQ = () => {
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold text-center mb-8 text-gray-900">Frequently Asked Questions</h1>
+      
       <div className="space-y-4">
         {faqs.map((faq, index) => (
-          <FAQItem key={index} question={faq.question} answer={faq.answer} />
+          <FAQItem
+            key={index}
+            question={faq.question}
+            answer={faq.answer}
+          />
         ))}
       </div>
     </div>

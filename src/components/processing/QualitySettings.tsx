@@ -79,12 +79,12 @@ const QualitySettings: React.FC<QualitySettingsProps> = ({ onSettingsChange, isP
       <button
         onClick={() => setIsOpen(!isOpen)}
         disabled={isProcessing}
-        className="flex items-center space-x-2 text-base text-gray-600 hover:text-gray-900 disabled:opacity-50 disabled:cursor-not-allowed font-semibold"
+        className="flex items-center space-x-2 text-base text-blue-600 hover:text-blue-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-semibold"
       >
         <svg className={`w-5 h-5 transition-transform ${isOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
         </svg>
-        <span>Quality Settings</span>
+        <span>⚙️ Quality Settings</span>
       </button>
 
       {isOpen && (

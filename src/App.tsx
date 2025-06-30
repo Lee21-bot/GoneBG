@@ -25,7 +25,7 @@ const Home = () => {
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-[#f5f1e6]">
         <ErrorBoundary>
           <Header />
           <div className="pt-12">
