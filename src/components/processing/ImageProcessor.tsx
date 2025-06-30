@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { type ProcessedImage } from '../../hooks/useBackgroundRemoval';
 import DownloadButton from '../export/DownloadButton';
+import MaskEditor from './MaskEditor';
 import { formatFileSize } from '../../utils/fileValidation';
 
 interface ImageProcessorProps {
@@ -22,6 +23,7 @@ const ImageProcessor: React.FC<ImageProcessorProps> = ({
   const [processedImageUrl] = useState<string>(() => 
     URL.createObjectURL(processedImage.processedFile)
   );
+  const [showMaskEditor, setShowMaskEditor] = useState(false);
 
   const { originalFile, processedFile, originalImage, fileValidation, processingTime } = processedImage;
 
@@ -138,6 +140,16 @@ const ImageProcessor: React.FC<ImageProcessorProps> = ({
         </button>
 
         <button
+          onClick={() => setShowMaskEditor(!showMaskEditor)}
+          className="inline-flex items-center space-x-2 bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors"
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+          </svg>
+          <span>{showMaskEditor ? 'Hide Editor' : 'Fine-tune'}</span>
+        </button>
+
+        <button
           onClick={onReprocess}
           disabled={isProcessing}
           className="inline-flex items-center space-x-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
@@ -157,6 +169,22 @@ const ImageProcessor: React.FC<ImageProcessorProps> = ({
           </svg>
         </button>
       </div>
+
+      {/* Mask Editor */}
+      {showMaskEditor && (
+        <div className="mt-8 border-t pt-6">
+          <div className="text-center mb-4">
+            <h4 className="text-lg font-semibold text-gray-900 mb-2">Fine-tune Your Result</h4>
+            <p className="text-sm text-gray-600">Use the brush to restore missing parts or remove unwanted areas</p>
+          </div>
+          <MaskEditor 
+            imageUrl={processedImageUrl}
+            originalImageUrl={originalImageUrl}
+            width={Math.min(400, originalImage.width)}
+            height={Math.min(400, originalImage.height * (Math.min(400, originalImage.width) / originalImage.width))}
+          />
+        </div>
+      )}
     </div>
   );
 };

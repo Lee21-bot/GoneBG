@@ -17,7 +17,7 @@ const examples: Example[] = [
     description: 'Perfect for LinkedIn profiles, resumes, and professional headshots.',
     category: 'Portraits',
     beforeImage: '/examples/portrait-before.jpg',
-    afterImage: '/examples/portrait-after.jpg',
+    afterImage: '/examples/portrait-after.png',
     tips: [
       'Works best with good lighting',
       'Ideal for head and shoulder shots',
@@ -30,7 +30,7 @@ const examples: Example[] = [
     description: 'Remove backgrounds from product photos for e-commerce and marketing.',
     category: 'Products',
     beforeImage: '/examples/product-before.jpg',
-    afterImage: '/examples/product-after.jpg',
+    afterImage: '/examples/product-after.png',
     tips: [
       'Clean, simple backgrounds work best',
       'Good for e-commerce listings',
@@ -43,7 +43,7 @@ const examples: Example[] = [
     description: 'Remove backgrounds from pet photos for social media and keepsakes.',
     category: 'Pets',
     beforeImage: '/examples/pet-before.jpg',
-    afterImage: '/examples/pet-after.jpg',
+    afterImage: '/examples/Pet-after.png',
     tips: [
       'Works well with most pet breeds',
       'Great for social media posts',
@@ -56,7 +56,7 @@ const examples: Example[] = [
     description: 'Remove backgrounds from group photos for team presentations and social media.',
     category: 'Groups',
     beforeImage: '/examples/group-before.jpg',
-    afterImage: '/examples/group-after.jpg',
+    afterImage: '/examples/group-after.png',
     tips: [
       'Best with clear separation from background',
       'Good for team presentations',
@@ -133,24 +133,37 @@ const ExamplesPage: React.FC = () => {
               <div className="grid md:grid-cols-2 gap-6 mb-6">
                 <div className="text-center">
                   <div className="bg-gray-100 rounded-lg p-4 mb-2">
-                    <img 
-                      src={example.beforeImage} 
-                      alt={`${example.title} - Before background removal`}
-                      className="w-full h-48 object-cover rounded"
-                      loading="lazy"
-                    />
+                    <div className="w-full" style={{ paddingBottom: '75%', position: 'relative' }}>
+                      <img 
+                        src={example.beforeImage} 
+                        alt={`${example.title} - Before background removal`}
+                        className="absolute inset-0 w-full h-full object-contain rounded"
+                        loading="lazy"
+                      />
+                    </div>
                   </div>
                   <p className="text-sm text-gray-500 font-medium">Original</p>
                 </div>
                 
                 <div className="text-center">
-                  <div className="bg-gray-100 rounded-lg p-4 mb-2">
-                    <img 
-                      src={example.afterImage} 
-                      alt={`${example.title} - After background removal`}
-                      className="w-full h-48 object-cover rounded"
-                      loading="lazy"
-                    />
+                  <div className="bg-gray-100 rounded-lg p-4 mb-2" style={{
+                    backgroundImage: `
+                      linear-gradient(45deg, #f3f4f6 25%, transparent 25%), 
+                      linear-gradient(-45deg, #f3f4f6 25%, transparent 25%), 
+                      linear-gradient(45deg, transparent 75%, #f3f4f6 75%), 
+                      linear-gradient(-45deg, transparent 75%, #f3f4f6 75%)
+                    `,
+                    backgroundSize: '20px 20px',
+                    backgroundPosition: '0 0, 0 10px, 10px -10px, -10px 0px'
+                  }}>
+                    <div className="w-full" style={{ paddingBottom: '75%', position: 'relative' }}>
+                      <img 
+                        src={example.afterImage} 
+                        alt={`${example.title} - After background removal`}
+                        className="absolute inset-0 w-full h-full object-contain rounded"
+                        loading="lazy"
+                      />
+                    </div>
                   </div>
                   <p className="text-sm text-gray-500 font-medium">Background Removed</p>
                 </div>
